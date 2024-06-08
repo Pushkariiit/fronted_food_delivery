@@ -1,57 +1,76 @@
 import React from 'react';
 import { assets } from '../../assets/assets';
+import styled from 'styled-components';
+
+const HeaderContainer = styled.div`
+  height: 34vw;
+  margin: 30px auto;
+  background: url('${assets.header_img}') no-repeat;
+  background-size: contain;
+  position: relative;
+`;
+
+const HeaderContents = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.5vw;
+  max-width: 50%;
+  bottom: 10%;
+  left: 6vw;
+  animation: fadeIn 3s;
+
+  @media (max-width: 1050px) {
+    max-width: 45%;
+  }
+
+  @media (max-width: 750px) {
+    max-width: 65%;
+  }
+`;
+
+const HeaderTitle = styled.h2`
+  font-weight: 500;
+  color: white;
+  font-size: max(4.5vw, 22px);
+`;
+
+const HeaderDescription = styled.p`
+  color: white;
+  font-size: 1vw;
+
+  @media (max-width: 750px) {
+    display: none;
+  }
+`;
+
+const HeaderButton = styled.button`
+  border: none;
+  color: #747474;
+  font-weight: 500;
+  padding: 1vw 2.3vw;
+  background-color: white;
+  font-size: max(1vw, 13px);
+  border-radius: 50px;
+
+  @media (max-width: 750px) {
+    padding: 2vw 4vw;
+  }
+`;
 
 const Header = () => {
-  const headerStyle = {
-    height: '34vw',
-    margin: '30px auto',
-    background: `url(${assets.header_img}) no-repeat`,
-    backgroundSize: 'contain',
-    position: 'relative'
-  };
-
-  const headerContentsStyle = {
-    position: 'absolute',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'start',
-    gap: '1.5vw',
-    maxWidth: '50%',
-    bottom: '10%',
-    left: '6vw',
-    animation: 'fadeIn 3s'
-  };
-
-  const titleStyle = {
-    fontWeight: 500,
-    color: 'white',
-    fontSize: 'max(4.5vw, 22px)'
-  };
-
-  const paragraphStyle = {
-    color: 'white',
-    fontSize: '1vw'
-  };
-
-  const buttonStyle = {
-    border: 'none',
-    color: '#747474',
-    fontWeight: 500,
-    padding: '1vw 2.3vw',
-    backgroundColor: 'white',
-    fontSize: 'max(1vw, 13px)',
-    borderRadius: '50px'
-  };
-
   return (
-    <div style={headerStyle}>
-      <div style={headerContentsStyle}>
-        <h2 style={titleStyle}>Order your favourite food here</h2>
-        <p style={paragraphStyle}>Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
-        <button style={buttonStyle}>View Menu</button>
-      </div>
-    </div>
+    <HeaderContainer>
+      <HeaderContents>
+        <HeaderTitle>Order your favourite food here</HeaderTitle>
+        <HeaderDescription>
+          Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.
+        </HeaderDescription>
+        <HeaderButton>View Menu</HeaderButton>
+      </HeaderContents>
+    </HeaderContainer>
   );
-}
+};
 
 export default Header;
